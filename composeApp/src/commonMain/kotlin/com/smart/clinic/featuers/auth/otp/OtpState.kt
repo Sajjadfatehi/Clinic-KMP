@@ -1,5 +1,5 @@
 package com.smart.clinic.featuers.auth.otp
 
 data class OtpState(
-    val otp: String = ""
+    val otp: List<String> = List(4) { "" }
 )

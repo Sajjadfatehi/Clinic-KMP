@@ -12,6 +12,12 @@ class OtpViewModel : BaseViewModel<OtpState, OtpAction, OtpEffect>(
 
             }
 
+            is OtpAction.OnOtpChanged -> {
+                setState {
+                    copy(otp = action.otp)
+                }
+            }
+
             else -> Unit
 
         }

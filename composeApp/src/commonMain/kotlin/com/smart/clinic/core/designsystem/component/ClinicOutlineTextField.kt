@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -64,6 +65,8 @@ fun ClinicOutlineTextFieldWithOuterBorder(
                 shape =shape
             )
             .padding(4.dp)
+        ,
+        contentAlignment = Alignment.Center
     ) {
 
         OutlinedTextField(
@@ -82,7 +85,6 @@ fun ClinicOutlineTextFieldWithOuterBorder(
             textStyle = textStyle.copy(
                 textAlign = textAlign,
                 color = textColor,
-
                 ),
             colors = colors,
             shape = shape,
@@ -100,6 +102,7 @@ fun ClinicOutlineTextFieldWithOuterBorder(
             keyboardActions = keyboardActions,
             maxLines = maxLines,
             minLines = minLines,
+            singleLine = singleLine,
             interactionSource = interactionSource
 
         )
