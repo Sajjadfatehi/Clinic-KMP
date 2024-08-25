@@ -1,9 +1,12 @@
 package com.smart.clinic.featuers.auth.otp
 
 import com.smart.clinic.core.BaseViewModel
+import com.smart.clinic.data.TestProvider
 
-class OtpViewModel : BaseViewModel<OtpState, OtpAction, OtpEffect>(
-    OtpState()
+class OtpViewModel(
+    val testProvider: TestProvider
+) : BaseViewModel<OtpState, OtpAction, OtpEffect>(
+    OtpState(desc = testProvider.myPrint())
 ) {
 
     override fun onEachAction(action: OtpAction) {

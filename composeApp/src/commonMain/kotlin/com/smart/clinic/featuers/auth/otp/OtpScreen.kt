@@ -48,13 +48,15 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 const val OTP_TEXT_FIELD_MAX_LENGTH = 1
 const val OTP_LENGTH = 4
 
 @Composable
 fun OtpScreen(navController: NavController) {
-    val viewModel = viewModel { OtpViewModel() }
+//    val viewModel = viewModel { OtpViewModel() }
+    val viewModel: OtpViewModel= koinViewModel()
     OtpScreen(viewModel) { action ->
         when (action) {
             OtpAction.OnNavigateBack -> {
@@ -69,7 +71,7 @@ fun OtpScreen(navController: NavController) {
 }
 
 @Composable
-fun OtpScreen(viewModel: OtpViewModel, onAction: (OtpAction) -> Unit) {
+fun OtpScreen(viewModel: OtpViewModel= koinViewModel(), onAction: (OtpAction) -> Unit) {
 
     val viewState by viewModel.state.collectAsState()
     OtpScreen(viewState, onAction)
@@ -110,7 +112,8 @@ fun OtpScreen(viewState: OtpState, onAction: (OtpAction) -> Unit) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "کد فعال\u200Cسازی به شماره زیر ارسال شد:\u2028\n89***090399",
+//                text = "کد فعال\u200Cسازی به شماره زیر ارسال شد:\u2028\n89***090399",
+                text = viewState.desc,
                 style = ClinicTheme.typography.paragraphMedium,
                 color = ClinicTheme.colorScheme.foregroundBase,
                 textAlign = TextAlign.Start

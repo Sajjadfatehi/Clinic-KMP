@@ -13,6 +13,8 @@ import androidx.navigation.compose.rememberNavController
 import com.smart.clinic.core.designsystem.theme.ClinicTheme
 import com.smart.clinic.navigation.ClinicNavHost
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.KoinContext
+import org.koin.core.context.KoinContext
 
 @Composable
 @Preview
@@ -31,19 +33,20 @@ fun App() {
                 }
             }
         }*/
-
-        val navController = rememberNavController()
-        Scaffold(
-            contentWindowInsets = WindowInsets(0, 0, 0, 0),
-            containerColor = ClinicTheme.colorScheme.backgroundBase
-        ) { padding ->
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .windowInsetsPadding(WindowInsets.systemBars)
-            ) {
-                ClinicNavHost(navController)
+        KoinContext {
+            val navController = rememberNavController()
+            Scaffold(
+                contentWindowInsets = WindowInsets(0, 0, 0, 0),
+                containerColor = ClinicTheme.colorScheme.backgroundBase
+            ) { padding ->
+                Box(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .windowInsetsPadding(WindowInsets.systemBars)
+                ) {
+                    ClinicNavHost(navController)
+                }
             }
         }
     }
