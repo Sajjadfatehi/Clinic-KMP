@@ -3,6 +3,7 @@ package com.smart.clinic.featuers.auth.register
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,9 +38,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import clinic.composeapp.generated.resources.Res
 import clinic.composeapp.generated.resources.and
+import clinic.composeapp.generated.resources.ic_add
 import clinic.composeapp.generated.resources.ic_arrow_right
 import clinic.composeapp.generated.resources.ic_check
-import clinic.composeapp.generated.resources.ic_edit_image
+import clinic.composeapp.generated.resources.ic_edit
 import clinic.composeapp.generated.resources.ic_register_name
 import clinic.composeapp.generated.resources.ic_three_stars
 import clinic.composeapp.generated.resources.label_create_account
@@ -55,10 +59,12 @@ import clinic.composeapp.generated.resources.privacy_policy_value
 import clinic.composeapp.generated.resources.profile_unknown
 import clinic.composeapp.generated.resources.terms_of_use_label
 import clinic.composeapp.generated.resources.terms_of_use_value
+import com.smart.clinic.core.designsystem.ImagePicker
 import com.smart.clinic.core.designsystem.component.ClinicOutlineTextFieldWithOuterBorder
 import com.smart.clinic.core.designsystem.component.ClinicTopAppBar
 import com.smart.clinic.core.designsystem.component.ClinicWithIconButton
 import com.smart.clinic.core.designsystem.theme.ClinicTheme
+import com.smart.clinic.core.rememberBitmapFromBytes
 import com.smart.clinic.featuers.auth.registerTermsAndCondition.navigation.REGISTER_TC_ROUTE
 import com.smart.clinic.featuers.auth.role.RoleType
 import kotlinx.coroutines.flow.launchIn
@@ -68,10 +74,14 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 
 @Composable
-fun RegisterScreen(navController: NavController, roleType: Int) {
+fun RegisterScreen(
+    navController: NavController,
+    roleType: Int,
+    imagePicker: ImagePicker
+) {
 
     val viewModel = viewModel { RegisterViewModel() }
-    RegisterScreen(viewModel, roleType) { action ->
+    RegisterScreen(viewModel, roleType, imagePicker) { action ->
         when (action) {
             is RegisterAction.OnNavigateBack -> {
                 navController.navigateUp()
@@ -86,16 +96,25 @@ fun RegisterScreen(navController: NavController, roleType: Int) {
             }
         }
     }
+    imagePicker.registerPicker {
+        viewModel.submitAction(RegisterAction.OnImageSelected(it))
+    }
 }
 
 @Composable
-fun RegisterScreen(
+internal fun RegisterScreen(
     viewModel: RegisterViewModel,
     roleType: Int,
+    imagePicker: ImagePicker,
     onAction: (RegisterAction) -> Unit
 ) {
     val viewState by viewModel.state.collectAsState()
-    RegisterScreen(viewState = viewState, roleType = roleType, onAction = onAction)
+    RegisterScreen(
+        viewState = viewState,
+        roleType = roleType,
+        imagePicker = imagePicker,
+        onAction = onAction
+    )
 
     LaunchedEffect(viewModel) {
         viewModel.effect.onEach {
@@ -107,7 +126,12 @@ fun RegisterScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterScreen(viewState: RegisterState, roleType: Int, onAction: (RegisterAction) -> Unit) {
+internal fun RegisterScreen(
+    viewState: RegisterState,
+    roleType: Int,
+    imagePicker: ImagePicker,
+    onAction: (RegisterAction) -> Unit
+) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
@@ -128,8 +152,11 @@ fun RegisterScreen(viewState: RegisterState, roleType: Int, onAction: (RegisterA
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ProfilePicturePicker(
-                modifier = Modifier.padding(24.dp)
-            )
+                modifier = Modifier.padding(24.dp),
+                image = viewState.image
+            ) {
+                imagePicker.pickImage()
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -313,64 +340,58 @@ fun TermsAndConditionsText(
 
 @Composable
 fun ProfilePicturePicker(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    image: ByteArray?,
+    onImageClicked: () -> Unit
 ) {
-    // State to hold the selected image URI
-//    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
-
-    // Launcher for image picking activity
-//    val launcher = rememberLauncherForActivityResult(
-//        contract = ActivityResultContracts.GetContent()
-//    ) { uri: Uri? ->
-//        selectedImageUri = uri
-//    }
-
+    val bitmap = rememberBitmapFromBytes(image)
+    val interactionSource = remember { MutableInteractionSource() }
     Box(
         contentAlignment = Alignment.BottomEnd,
         modifier = modifier
             .size(80.dp)
-            .clickable {
-//                launcher.launch("image/*")
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null
+            ) {
+                onImageClicked.invoke()
             }
     ) {
-        // Profile image (default or selected)
-//        if (selectedImageUri != null) {
-//            Image(
-//                painter = rememberImagePainter(selectedImageUri),
-//                contentDescription = "Profile Picture",
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier
-//                    .fillMaxSize()
-//                    .clip(CircleShape)
-//            )
-//        } else {
-        Image(
-            painter = painterResource(Res.drawable.profile_unknown),
-            contentDescription = "Default Profile Picture",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .fillMaxSize()
-                .clip(CircleShape)
-        )
-//        }
-
-
+        if (bitmap != null) {
+            Image(
+                bitmap = bitmap,
+                contentDescription = "Default Profile Picture",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(CircleShape)
+            )
+        } else {
+            Image(
+                painter = painterResource(Res.drawable.profile_unknown),
+                contentDescription = "Default Profile Picture",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(CircleShape)
+            )
+        }
         Icon(
-            imageVector = vectorResource(Res.drawable.ic_edit_image),
-            contentDescription = "Edit Icon",
+            imageVector = if (bitmap == null) {
+                vectorResource(Res.drawable.ic_add)
+            } else {
+                vectorResource(Res.drawable.ic_edit)
+            },
+            contentDescription = "select image icon",
             modifier = Modifier
-                .background(Color.White, shape = CircleShape)
-//                .padding(4.dp)
-                .align(Alignment.BottomStart)
+                .size(24.dp)
+                .background(
+                    color = ClinicTheme.colorScheme.backgroundInverse,
+                    shape = RoundedCornerShape(ClinicTheme.shapes.xSmall)
+                )
+                .padding(6.dp)
+                .align(Alignment.BottomStart),
+            tint = Color.White
         )
     }
 }
-//
-//@Composable
-//fun rememberImagePainter(uri: Uri?): Painter {
-//    return if (uri != null) {
-//        androidx.compose.ui.res.painterResource(id = R.drawable.ic_image_placeholder)
-//    } else {
-//        painterResource(id = R.drawable.ic_default_profile)
-//    }
-//}

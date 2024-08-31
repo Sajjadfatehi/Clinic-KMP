@@ -6,4 +6,5 @@ sealed interface RegisterAction {
     data object OnRegisterInfoButtonClicked : RegisterAction
     data class OnTermsAndConditionClicked(val title: String, val text: String) : RegisterAction
     data object OnNavigateBack : RegisterAction
+    data class OnImageSelected(val imageByteArray: ByteArray) : RegisterAction
 }

@@ -4,13 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.smart.clinic.featuers.auth.login.navigation.LOGIN_ROUTE
+import com.smart.clinic.core.designsystem.ImagePicker
 import com.smart.clinic.featuers.auth.login.navigation.loginScreen
 import com.smart.clinic.featuers.auth.otp.navigation.otpScreen
 import com.smart.clinic.featuers.auth.register.navigation.registerScreen
 import com.smart.clinic.featuers.auth.registerTermsAndCondition.navigation.registerScreenTermsAndConditionScreen
 import com.smart.clinic.featuers.auth.role.navigation.ROLE_ROUTE
 import com.smart.clinic.featuers.auth.role.navigation.roleScreen
+import com.smart.clinic.featuers.onboarding.navigation.ONBOARDING_ROUTE
 import com.smart.clinic.featuers.onboarding.navigation.onboardingScreen
 
 /**
@@ -22,15 +23,16 @@ import com.smart.clinic.featuers.onboarding.navigation.onboardingScreen
  */
 @Composable
 fun ClinicNavHost(
-    navController: NavController
+    navController: NavController,
+    imagePicker: ImagePicker
 ) {
     NavHost(
         navController = navController as NavHostController,
-        startDestination = LOGIN_ROUTE,
+        startDestination = ONBOARDING_ROUTE,
     ) {
         loginScreen(navController)
         roleScreen(navController)
-        registerScreen(navController)
+        registerScreen(navController,imagePicker)
         registerScreenTermsAndConditionScreen(navController)
         otpScreen(navController)
         onboardingScreen(navController)

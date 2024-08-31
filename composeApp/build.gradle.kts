@@ -62,6 +62,7 @@ kotlin {
 
             implementation(libs.bundles.ktor)
 
+
         }
         nativeMain.dependencies {
             implementation(libs.ktor.client.darwin)

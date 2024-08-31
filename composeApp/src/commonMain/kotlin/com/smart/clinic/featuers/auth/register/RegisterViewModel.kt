@@ -24,6 +24,12 @@ class RegisterViewModel : BaseViewModel<RegisterState, RegisterAction, RegisterE
 
             }
 
+            is RegisterAction.OnImageSelected -> {
+                setState {
+                    copy(image = action.imageByteArray)
+                }
+            }
+
             else -> Unit
         }
     }

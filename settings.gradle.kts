@@ -29,3 +29,6 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":feature:auth:auth_presentation")
+include(":feature:auth:auth_domain")
+include(":feature:auth:auth_data")

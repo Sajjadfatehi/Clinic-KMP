@@ -2,6 +2,7 @@ package com.smart.clinic
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import com.smart.clinic.core.designsystem.ImagePickerFactory
 import com.smart.clinic.di.initKoin
 
 fun main() {
@@ -11,7 +12,7 @@ fun main() {
             onCloseRequest = ::exitApplication,
             title = "Clinic",
         ) {
-            App()
+            App(ImagePickerFactory(window).createPicker())
         }
     }
 }
