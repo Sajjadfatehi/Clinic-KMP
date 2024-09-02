@@ -59,7 +59,7 @@ import clinic.composeapp.generated.resources.privacy_policy_value
 import clinic.composeapp.generated.resources.profile_unknown
 import clinic.composeapp.generated.resources.terms_of_use_label
 import clinic.composeapp.generated.resources.terms_of_use_value
-import com.smart.clinic.core.designsystem.ImagePicker
+import com.smart.clinic.core.ImagePicker
 import com.smart.clinic.core.designsystem.component.ClinicOutlineTextFieldWithOuterBorder
 import com.smart.clinic.core.designsystem.component.ClinicTopAppBar
 import com.smart.clinic.core.designsystem.component.ClinicWithIconButton

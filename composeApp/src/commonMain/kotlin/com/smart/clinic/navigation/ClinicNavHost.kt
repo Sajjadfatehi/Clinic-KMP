@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.smart.clinic.core.designsystem.ImagePicker
+import com.smart.clinic.core.ImagePicker
 import com.smart.clinic.featuers.auth.login.navigation.loginScreen
 import com.smart.clinic.featuers.auth.otp.navigation.otpScreen
 import com.smart.clinic.featuers.auth.register.navigation.registerScreen

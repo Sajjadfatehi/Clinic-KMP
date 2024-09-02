@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.smart.clinic.core.designsystem.ImagePicker
+import com.smart.clinic.core.ImagePicker
 import com.smart.clinic.featuers.auth.register.RegisterScreen
 
 internal const val ROLE_TYPE_ARG = "roleType"

@@ -62,6 +62,8 @@ kotlin {
 
             implementation(libs.bundles.ktor)
 
+            implementation(project(":feature:auth:auth_presentation"))
+
 
         }
         nativeMain.dependencies {
