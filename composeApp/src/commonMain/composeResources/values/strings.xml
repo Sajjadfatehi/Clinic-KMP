@@ -2,33 +2,5 @@
 
 <resources>
     <string name="app_name">کلینیک</string>
-    <string name="label_welcome">خوش اومدی!</string>
-    <string name="label_enter_by_phone_number">برای ورود، شماره همراهت رو وارد کن</string>
-    <string name="label_send_confirmation_code">ارسال کد تایید</string>
-    <string name="label_login_to_deep_sense">ورود به دیپ‌سنس</string>
-    <string name="label_select_role">برای ادامه، نقش خودت رو انتخاب کن:</string>
-    <string name="label_continue_as_patient">ادامه به عنوان مراجع</string>
-    <string name="label_continue_as_doctor">ادامه به عنوان مراجع</string>
-    <string name="label_continue_as_manager">ادامه به عنوان مدیر کلینیک</string>
-    <string name="label_continue_as_patient_desc">در جستجوی روان‌درمانگر متخصص</string>
-    <string name="label_continue_as_doctor_desc">مدیریت فایل‌های مراجعان</string>
-    <string name="label_continue_as_manager_desc">مدیریت پزشکان و امور مالی</string>
-    <string name="label_create_account">ساخت حساب کاربری</string>
-    <string name="label_fill_info_desc_patient">نام و نام خانوادگی خودت رو وارد کن و اگه دوست داشتی، یک تصویر پروفایل هم برای حساب کاربریت اضافه کن</string>
-    <string name="label_fill_info_desc_doctor">نام و نام خانوادگی و شماره نظام خودت رو وارد کن و اگه دوست داشتی، یک تصویر پروفایل هم برای حساب کاربریت اضافه کن</string>
-    <string name="label_full_name">نام و نام خانوادگی</string>
-    <string name="label_medical_system">نظام پزشکی</string>
-    <string name="label_register_info">ثبت اطلاعات</string>
-    <string name="label_term_condition_first_part">با ثبت اطلاعات، مطالعه</string>
-    <string name="label_term_condition_second_part">شرایط استفاده</string>
-    <string name="label_term_condition_third_part">سیاست حریم شخصی</string>
-    <string name="label_term_condition_fourth_part">را تایید و موافقت خودم را با محتوای آن اعلام می‌کنم.</string>
-    <string name="and">و</string>
-    <string name="terms_of_use_label">شرایط استفاده</string>
-    <string name="privacy_policy_label">حریم شخصی</string>
-    <string name="terms_of_use_value">با استفاده از خدمات ما، شما موافقت می‌کنید که به شرایط استفاده ما پایبند باشید. شما مسئول حفظ محرمانگی اطلاعات حساب خود و تمام فعالیت‌هایی هستید که تحت حساب شما انجام می‌شود. استفاده غیرمجاز از خدمات به شدت ممنوع است. ما حق داریم دسترسی شما به خدمات را به دلیل نقض این شرایط قطع کنیم.</string>
-    <string name="privacy_policy_value">ما به حریم خصوصی شما اهمیت می‌دهیم و متعهد به حفاظت از اطلاعات شخصی شما هستیم. ما اطلاعات شما را فقط برای ارائه و بهبود خدمات خود جمع‌آوری و استفاده می‌کنیم. اطلاعات شما بدون رضایت شما با اشخاص ثالث به اشتراک گذاشته نمی‌شود، مگر در مواردی که قانون الزام کند. شما حق دسترسی، به‌روزرسانی یا حذف اطلاعات شخصی خود را در هر زمان دارید.</string>
-    <string name="label_confirm_otp_code">تایید کد فعال‌سازی</string>
-
 
 </resources>

@@ -45,6 +45,10 @@ kotlin {
 
         }
         commonMain.dependencies {
+            implementation(project(":common:commonUi"))
+            implementation(project(":feature:onboarding"))
+            implementation(project(":feature:auth:auth_presentation"))
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)

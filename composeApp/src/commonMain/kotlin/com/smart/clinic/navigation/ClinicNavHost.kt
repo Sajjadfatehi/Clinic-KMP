@@ -4,15 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.smart.clinic.core.ImagePicker
-import com.smart.clinic.featuers.auth.login.navigation.loginScreen
-import com.smart.clinic.featuers.auth.otp.navigation.otpScreen
-import com.smart.clinic.featuers.auth.register.navigation.registerScreen
-import com.smart.clinic.featuers.auth.registerTermsAndCondition.navigation.registerScreenTermsAndConditionScreen
-import com.smart.clinic.featuers.auth.role.navigation.ROLE_ROUTE
-import com.smart.clinic.featuers.auth.role.navigation.roleScreen
-import com.smart.clinic.featuers.onboarding.navigation.ONBOARDING_ROUTE
-import com.smart.clinic.featuers.onboarding.navigation.onboardingScreen
+import com.smart.clinic.common.commonUi.imagePicker.ImagePicker
+import com.smart.clinic.feature.auth.login.navigation.loginScreen
+import com.smart.clinic.feature.auth.otp.navigation.otpScreen
+import com.smart.clinic.feature.auth.register.navigation.registerScreen
+import com.smart.clinic.feature.auth.registerTermsAndCondition.navigation.registerScreenTermsAndConditionScreen
+import com.smart.clinic.feature.auth.role.navigation.ROLE_ROUTE
+import com.smart.clinic.feature.auth.role.navigation.roleScreen
+import com.smart.clinic.feature.onboarding.navigation.ONBOARDING_ROUTE
+import com.smart.clinic.feature.onboarding.navigation.onboardingScreen
 
 /**
  * Top-level navigation graph. Navigation is organized as explained at
@@ -28,11 +28,11 @@ fun ClinicNavHost(
 ) {
     NavHost(
         navController = navController as NavHostController,
-        startDestination = ONBOARDING_ROUTE,
+        startDestination = ROLE_ROUTE,
     ) {
         loginScreen(navController)
         roleScreen(navController)
-        registerScreen(navController,imagePicker)
+        registerScreen(navController, imagePicker)
         registerScreenTermsAndConditionScreen(navController)
         otpScreen(navController)
         onboardingScreen(navController)

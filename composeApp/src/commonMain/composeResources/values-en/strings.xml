@@ -2,32 +2,5 @@
 
 <resources>
     <string name="app_name">Clinic</string>
-    <string name="label_welcome">Your welcome</string>
-    <string name="label_enter_by_phone_number">Put your phone number for entrance</string>
-    <string name="label_send_confirmation_code">Send confirmation code</string>
-    <string name="label_login_to_deep_sense">Login to Deep Sense</string>
-    <string name="label_select_role">To continue, choose your role:</string>
-    <string name="label_continue_as_patient">Continued as patient</string>
-    <string name="label_continue_as_doctor">Continued as doctor</string>
-    <string name="label_continue_as_manager">Continued as clinic manager</string>
-    <string name="label_continue_as_patient_desc">Looking for an expert psychotherapist</string>
-    <string name="label_continue_as_doctor_desc">Management of client files</string>
-    <string name="label_continue_as_manager_desc">Management of doctors and finances</string>
-    <string name="label_create_account">Create a user account</string>
-    <string name="label_fill_info_desc_patient">Enter your name and surname and if you like, add a profile picture for your account</string>
-    <string name="label_fill_info_desc_doctor">Enter your name and system number and if you like, add a profile picture for your account</string>
-    <string name="label_full_name">Name and surname</string>
-    <string name="label_medical_system">Medical system</string>
-    <string name="label_register_info">Register info</string>
-    <string name="label_term_condition_first_part">By registering information, studying</string>
-    <string name="label_term_condition_second_part">terms of Use</string>
-    <string name="label_term_condition_third_part">privacy policy</string>
-    <string name="label_term_condition_fourth_part">I confirm and declare my agreement with its content.</string>
-    <string name="and">and</string>
-    <string name="terms_of_use_label">Terms of use</string>
-    <string name="privacy_policy_label">Privacy policy</string>
-    <string name="terms_of_use_value">By using our Services, you agree to be bound by our Terms of Use. You are responsible for maintaining the confidentiality of your account information and all activities that occur under your account. Unauthorized use of services is strictly prohibited. We reserve the right to terminate your access to the Services for violating these Terms.</string>
-    <string name="privacy_policy_value">We care about your privacy and are committed to protecting your personal information. We collect and use your information only to provide and improve our services. Your information will not be shared with third parties without your consent, except where required by law. You have the right to access, update or delete your personal information at any time.</string>
-    <string name="label_confirm_otp_code">Confirm the otp code</string>
 
 </resources>

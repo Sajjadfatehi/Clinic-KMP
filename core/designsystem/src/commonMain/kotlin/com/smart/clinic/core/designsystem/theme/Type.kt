@@ -17,7 +17,6 @@ import clinic.core.designsystem.generated.resources.Peyda_Thin
 import clinic.core.designsystem.generated.resources.Res
 import org.jetbrains.compose.resources.Font
 
-
 data class AppTypography(
     val fontFamily: FontFamily,
     val headingH1: TextStyle = TextStyle(

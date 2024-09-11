@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -8,10 +11,9 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -42,7 +44,7 @@ kotlin {
         commonMain.dependencies {
 
             api(project(":core:designsystem"))
-
+            implementation(compose.components.resources)
             api(libs.androidx.lifecycle.viewmodel)
             api(libs.jetbrains.androidx.navigation.compose)
             api(libs.jetbrains.kotlin.serialization)
@@ -51,6 +53,8 @@ kotlin {
             api(libs.koin.compose)
             api(libs.koin.compose.viewmodel)
 
+        }
+        nativeMain.dependencies {
         }
 
         desktopMain.dependencies {
@@ -67,8 +71,8 @@ android {
         minSdk = 23
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 dependencies {
