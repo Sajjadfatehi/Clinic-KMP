@@ -48,6 +48,7 @@ kotlin {
             implementation(project(":common:commonUi"))
             implementation(project(":feature:onboarding"))
             implementation(project(":feature:auth:auth_presentation"))
+            implementation(project(":feature:home:home_presentation"))
 
             implementation(compose.runtime)
             implementation(compose.foundation)

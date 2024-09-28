@@ -11,6 +11,8 @@ import com.smart.clinic.feature.auth.register.navigation.registerScreen
 import com.smart.clinic.feature.auth.registerTermsAndCondition.navigation.registerScreenTermsAndConditionScreen
 import com.smart.clinic.feature.auth.role.navigation.ROLE_ROUTE
 import com.smart.clinic.feature.auth.role.navigation.roleScreen
+import com.smart.clinic.feature.home.navigation.HOME_ROUTE
+import com.smart.clinic.feature.home.navigation.homeScreen
 import com.smart.clinic.feature.onboarding.navigation.ONBOARDING_ROUTE
 import com.smart.clinic.feature.onboarding.navigation.onboardingScreen
 
@@ -28,7 +30,7 @@ fun ClinicNavHost(
 ) {
     NavHost(
         navController = navController as NavHostController,
-        startDestination = ROLE_ROUTE,
+        startDestination = HOME_ROUTE,
     ) {
         loginScreen(navController)
         roleScreen(navController)
@@ -36,5 +38,6 @@ fun ClinicNavHost(
         registerScreenTermsAndConditionScreen(navController)
         otpScreen(navController)
         onboardingScreen(navController)
+        homeScreen(navController)
     }
 }

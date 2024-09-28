@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="search">search</string>
+    <string name="appointment">appointment</string>
+    <string name="file">file</string>
+    <string name="notification">notification</string>
+    <string name="profile">profile</string>
+</resources>
